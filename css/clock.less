@@ -1,0 +1,220 @@
+@bodybackground:#F6F7F8;
+@headingborder: #333;
+@clockhandcolor: #ACBCD2;
+@clockbgcolor:#EFF3F7;
+@clockborder:#42464B;
+@numbersbg:#E2E7EC;
+@numbersborder:#B5C3CF;
+.animationSec (@name, @duration, @count, @linear) {
+	-webkit-animation: @name @duration @count @linear;
+	-moz-animation:    @name @duration @count @linear;
+	-ms-animation:     @name @duration @count @linear;
+}
+
+.animationMin (@name, @duration, @count, @linear){
+	-webkit-animation: @name @duration @count @linear;
+	-moz-animation:    @name @duration @count @linear;
+	-ms-animation:     @name @duration @count @linear;
+}
+
+.animationHour (@name, @duration, @count, @linear){
+	-webkit-animation: @name @duration @count @linear;
+	-moz-animation:    @name @duration @count @linear;
+	-ms-animation:     @name @duration @count @linear;
+}
+
+.borderRadiusCustom{	
+	-moz-border-radius:15em;
+	-webkit-border-radius:15em;
+	border-radius:15em;
+}
+
+.transformClockHand{
+	transform-origin:left bottom;
+	-webkit-transform-origin:left bottom;
+}
+
+
+body {
+	margin:0;
+	padding:0;
+	background:@bodybackground;
+}
+
+.clock-div {
+	width:20em;
+	margin:0 auto;
+	display:block
+}
+
+.heading {
+	font-family:'Limelight',cursive;
+	font-size:24px;
+	text-align:center;
+	padding:7px 0;
+	color:@headingborder;
+	border-top:1px solid @headingborder;
+	border-bottom:1px solid @headingborder;
+}
+
+#clock {
+	position:relative;
+	width:20em;
+	height:20em;
+	margin:0 auto;
+	border:2px solid @clockborder;
+	background-color:@clockbgcolor;
+	.borderRadiusCustom;
+}
+
+#clock:before {
+	content:'';
+	position:absolute;
+	z-index:2;
+	width:1em;
+	height:1em;
+	background:@headingborder;
+	left:50%;
+	top:50%;
+	margin:-4px 0 0 -8px;
+	.borderRadiusCustom;
+}
+
+#clock .numbers {
+	width:20em;
+	height:20em;
+	position:absolute;
+	top:-3px;
+	left:0
+}
+
+#clock .numbers li {
+	display:block;
+	width:1.5em;
+	height:1.5em;
+	position:absolute;
+	top:44%;
+	left:44%;
+	line-height:1.5em;
+	text-align:center;
+	margin:-.5em 0 0 -.5em;
+	font-weight:700;
+	border:1px solid @numbersborder;
+	background-color:@numbersbg;
+	color:@numbersborder;
+	.borderRadiusCustom;
+}
+
+#clock .numbers li:nth-child(1) {
+	transform:translate(73px, -110px)	
+}
+
+#clock .numbers li:nth-child(2) {
+	transform:translate(115px, -58px)
+}
+
+#clock .numbers li:nth-child(3) {
+	transform:translate(130px,0)	
+}
+
+#clock .numbers li:nth-child(4) {
+	transform:translate(110px,60px)	
+}
+
+#clock .numbers li:nth-child(5) {
+	transform:translate(73px,110px)	
+}
+
+#clock .numbers li:nth-child(6) {
+	transform:translate(0,130px)
+}
+
+#clock .numbers li:nth-child(7) {
+	transform:translate(-73px,110px)
+}
+
+#clock .numbers li:nth-child(8) {
+	transform:translate(-110px, 60px)	
+}
+
+#clock .numbers li:nth-child(9) {
+	transform:translate(-130px,0)	
+}
+
+#clock .numbers li:nth-child(10) {
+	transform:translate(-115px, -58px)
+}
+
+#clock .numbers li:nth-child(11) {
+	transform:translate(-73px, -110px)
+}
+
+#clock .numbers li:nth-child(12) {
+	transform:translate(0,-130px)
+}
+
+#clock span.hand {
+	background:#555;
+	position:absolute;
+	left:50%
+}
+
+#clock span.hand.second {
+	background:@clockhandcolor;
+	height:8em;
+	margin-left:1px;
+	top:2em;
+	width:.2em;	
+	animation:rotate-sec 60s infinite linear;
+	-webkit-animation:rotate-sec 60s infinite linear;
+	.transformClockHand;
+}
+
+#clock span.hand.minute {
+	background:@clockhandcolor;
+	height:6em;
+	margin-left:-1px;
+	top:3.9em;
+	width:.3em;
+	.animationMin(rotate-min, 3600s, infinite, linear );
+	.transformClockHand;
+}
+
+#clock span.hand.hour {
+	background:@clockhandcolor;
+	height:5.8em;
+	width:.3em;
+	margin-left:-2px;
+	top:4em;
+    .animationHour(rotate-hour, 84600s, infinite, linear);
+	.transformClockHand;
+}
+
+@keyframes rotate-sec {
+	0%{transform:rotate(0deg)}
+	100%{transform:rotate(360deg)}
+}
+@-webkit-keyframes rotate-sec {
+	0%{-webkit-transform:rotate(0deg)}
+	100%{-webkit-transform:rotate(360deg)}
+}
+
+@keyframes rotate-min {
+	0%{transform:rotate(0deg)}
+	100%{transform:rotate(360deg)}
+}
+
+@-webkit-keyframes rotate-min {
+	0%{-webkit-transform:rotate(0deg)}
+	100%{-webkit-transform:rotate(360deg)}
+}
+
+@keyframes rotate-hour {
+	0%{transform:rotate(0deg)}
+	100%{transform:rotate(360deg)}
+}
+
+@-webkit-keyframes rotate-hour {
+	0%{-webkit-transform:rotate(0deg)}
+	100%{-webkit-transform:rotate(360deg)}
+}
